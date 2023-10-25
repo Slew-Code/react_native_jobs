@@ -6,8 +6,7 @@ import { COLORS, icons, images, SIZES } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome,} from "../components";
 
 const Home = () => {
-    const Home = () => {
-        const router = useRouter()
+        const router = useRouter();
         const [searchTerm, setSearchTerm] = useState("");
 
         return (
@@ -52,6 +51,5 @@ const Home = () => {
             </SafeAreaView>
         );
     };
-}
 
 export default Home;
