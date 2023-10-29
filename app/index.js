@@ -4,10 +4,19 @@ import { Stack, useRouter } from "expo-router";
 
 import { COLORS, icons, images, SIZES } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome,} from "../components";
+//import NewCard from "./NewCard";
+import PopularJobCard from "../components/common/cards/popular/PopularJobCard";
 
 const Home = () => {
         const router = useRouter();
         const [searchTerm, setSearchTerm] = useState("");
+
+        // maybe use router.push instead of navigate.
+        const handleHeaderRightClick = () => {
+            // Use router.push to navigate to the NewCard screen when headerRight is clicked
+            //router.push("PopularJobCard"); // Replace "NewCard" with the actual name you assigned to your card screen
+            console.log("sdsd");
+        };
 
         return (
             // shows content safely without overlap 
@@ -20,7 +29,11 @@ const Home = () => {
                             <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' />
                         ),
                         headerRight: () => (
-                            <ScreenHeaderBtn iconUrl={images.profile} dimension='100%' />
+                            <ScreenHeaderBtn
+                                iconUrl={images.profile}
+                                dimension="100%"
+                                handlePress={handleHeaderRightClick} // Call the function when headerRight is clicked
+                            />
                         ),
                         headerTitle: "",
                     }}
