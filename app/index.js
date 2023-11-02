@@ -11,11 +11,16 @@ const Home = () => {
         const router = useRouter();
         const [searchTerm, setSearchTerm] = useState("");
 
-        // maybe use router.push instead of navigate.
+        const handleHeaderLeftClick = () => {
+            // Use router.push to navigate to the NewCard screen when headerRight is clicked
+            //router.push("PopularJobCard"); // Replace "NewCard" with the actual name you assigned to your card screen
+            console.log("Left");
+        };        
+
         const handleHeaderRightClick = () => {
             // Use router.push to navigate to the NewCard screen when headerRight is clicked
             //router.push("PopularJobCard"); // Replace "NewCard" with the actual name you assigned to your card screen
-            console.log("sdsd");
+            console.log("Right");
         };
 
         return (
@@ -26,12 +31,14 @@ const Home = () => {
                         headerStyle: { backgroundColor: COLORS.lightWhite },
                         headerShadowVisible: false,
                         headerLeft: () => (
-                            <ScreenHeaderBtn iconUrl={icons.menu} dimension='60%' />
+                            <ScreenHeaderBtn 
+                            iconUrl={icons.menu} dimension="60%" 
+                            handlePress={handleHeaderLeftClick}
+                            />
                         ),
                         headerRight: () => (
                             <ScreenHeaderBtn
-                                iconUrl={images.profile}
-                                dimension="100%"
+                                iconUrl={images.profile} dimension="100%"
                                 handlePress={handleHeaderRightClick} // Call the function when headerRight is clicked
                             />
                         ),
