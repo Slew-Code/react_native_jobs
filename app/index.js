@@ -3,10 +3,12 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
 import { COLORS, icons, images, SIZES } from "../constants";
-import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome,} from "../components";
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from "../components";
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import { NavigationContainer } from '@react-navigation/native';
+
+import { Button } from 'react-native';
 
 function Home({ navigation }) {
     const router = useRouter();
@@ -28,7 +30,7 @@ function Home({ navigation }) {
 
     return (
         // shows content safely without overlap 
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }} >
             <Stack.Screen
                 options={{
                     headerStyle: { backgroundColor: COLORS.lightWhite },
@@ -45,7 +47,7 @@ function Home({ navigation }) {
                             handlePress={handleHeaderRightClick} // Call the function when headerRight is clicked
                         />
                     ),
-                    headerTitle: "",
+                    headerTitle: ""
                 }}
             />
 
@@ -71,15 +73,25 @@ function Home({ navigation }) {
                 </View>
             </ScrollView>
         </SafeAreaView>
+        
     );
 };
+
+function NotificationsScreen({ navigation }) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Button onPress={() => navigation.goBack()} title="Go back home" />
+        </View>
+    );
+}
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
     return (       
-        <Drawer.Navigator initialRouteName="Home">
-            <Drawer.Screen name="Home" component={Home} />    
+        <Drawer.Navigator initialRouteName="Home" options={{ headerTitle: "sfs" }} >
+            <Drawer.Screen name="Home" component={Home} /> 
+            <Drawer.Screen name="Notifications" component={NotificationsScreen} />   
         </Drawer.Navigator>
     );
 }
