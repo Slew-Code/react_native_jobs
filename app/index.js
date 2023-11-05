@@ -67,7 +67,6 @@ function Home({ navigation }) {
                             }
                         }}
                     />
-
                     <Popularjobs />
                     <Nearbyjobs />
                 </View>

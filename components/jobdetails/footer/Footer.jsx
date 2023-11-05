@@ -3,7 +3,13 @@ import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import styles from "./footer.style";
 import { icons } from "../../../constants";
 
+//import { MMKVLoader, useMMKVStorage } from 'react-native-mmkv-storage';
+
+//const MMKV = new MMKVLoader().initialize();
+
 const Footer = ({ url }) => {
+  //const [user, setUser] = useMMKVStorage("user", MMKV, "robert");
+  
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.likeBtn}>
@@ -12,6 +18,7 @@ const Footer = ({ url }) => {
           resizeMode='contain'
           style={styles.likeBtnImage}
           // implement a simple storage for react native to store liked jobs 
+          //onPress={() => { setUser("andrew"); }}
         />
       </TouchableOpacity>
 
