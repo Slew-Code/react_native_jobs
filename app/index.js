@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
@@ -8,7 +7,30 @@ import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from "../components"
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import { NavigationContainer } from '@react-navigation/native';
 
-import { Button } from 'react-native';
+import { Button, Text } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from 'react';
+
+// To save data
+const storeData = async (value) => {
+    try {
+        await AsyncStorage.setItem('@storage_Key', value)
+    } catch (e) {
+        // saving error
+    }
+}
+
+// To read data
+const getData = async () => {
+    try {
+        const value = await AsyncStorage.getItem('@storage_Key')
+        if (value !== null) {
+            // value previously stored
+        }
+    } catch (e) {
+        // error reading value
+    }
+}
 
 function Home({ navigation }) {
     const router = useRouter();
@@ -77,10 +99,25 @@ function Home({ navigation }) {
 };
 
 function NotificationsScreen({ navigation }) {
-      
+    const [storedValue, setStoredValue] = useState('');
+
+    storeData('Hello, world!');
+
+    useEffect(() => {
+        const fetchStoredValue = async () => {
+            const value = await AsyncStorage.getItem('@storage_Key');
+            if (value !== null) {
+                setStoredValue(value);
+            }
+        };
+
+        fetchStoredValue();
+    }, []);
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Button onPress={() => navigation.goBack()} title="Go back home" />
+            <Text>{storedValue}</Text>
         </View>
     );
 }
