@@ -47,7 +47,7 @@ function Home({ navigation }) {
         // Use router.push to navigate to the NewCard screen when headerRight is clicked
         //router.push("PopularJobCard"); // Replace "NewCard" with the actual name you assigned to your card screen
         console.log("Right");
-        
+    
     };
 
     return (
@@ -120,7 +120,7 @@ function NotificationsScreen({ navigation }) {
             <Text>{storedValue}</Text>
         </View>
     );
-}
+} 
 
 const Drawer = createDrawerNavigator();
 
